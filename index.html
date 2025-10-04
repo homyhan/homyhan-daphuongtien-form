@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hướng dẫn HTML: Thuộc tính, Audio, Video, Iframe</title>
+    <!-- Tích hợp Tailwind CSS để làm đẹp trang web -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Sử dụng font Inter cho giao diện hiện đại -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* CSS tùy chỉnh */
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        /* Làm đẹp cho khối mã nguồn */
+        pre {
+            background-color: #1e293b;
+            /* Tương đương màu slate-800 của Tailwind */
+            color: #e2e8f0;
+            /* Tương đương màu slate-200 của Tailwind */
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            overflow-x: auto;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        code.inline-code {
+            background-color: #e2e8f0;
+            /* slate-200 */
+            color: #be123c;
+            /* rose-700 */
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-weight: 600;
+        }
+
+        .result-box {
+            border: 2px dashed #94a3b8;
+            /* slate-400 */
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        /* CSS cho việc tô màu cú pháp trong khối code */
+        pre .comment {
+            color: #94a3b8;
+        }
+
+        /* Màu cho chú thích (slate-400) */
+        pre .tag {
+            color: #7dd3fc;
+        }
+
+        /* Màu cho tên thẻ (sky-300) */
+        pre .attr {
+            color: #fcd34d;
+        }
+
+        /* Màu cho tên thuộc tính (amber-300) */
+        pre .val {
+            color: #86efac;
+        }
+
+        /* Màu cho giá trị thuộc tính (green-300) */
+        pre .punc {
+            color: #e2e8f0;
+        }
+
+        /* Màu cho dấu câu (slate-200) */
+    </style>
+</head>
+
+<body class="bg-slate-50 text-slate-800">
+
+    <!-- Phần container chính của trang -->
+    <div class="container mx-auto p-4 md:p-8 max-w-4xl">
+
+        <!-- Tiêu đề trang -->
+        <header class="text-center mb-12">
+            <h1 class="text-4xl md:text-5xl font-bold text-slate-900">Hướng dẫn học HTML</h1>
+            <p class="text-lg text-slate-600 mt-2">
+                Tìm hiểu về Thuộc tính, và các thẻ <code class="inline-code">&lt;audio&gt;</code>, <code
+                    class="inline-code">&lt;video&gt;</code>, <code class="inline-code">&lt;iframe&gt;</code>
+            </p>
+        </header>
+
+        <!-- Nội dung chính -->
+        <main class="space-y-12">
+
+            <!-- === PHẦN: THUỘC TÍNH (ATTRIBUTE) === -->
+            <section id="attributes" class="bg-white p-6 md:p-8 rounded-xl shadow-lg ring-1 ring-slate-900/5">
+                <div class="flex items-center gap-4">
+                    <div class="bg-emerald-100 text-emerald-600 p-3 rounded-full">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24"
+                            stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+                        </svg>
+                    </div>
+                    <h2 class="text-3xl font-bold text-slate-900">Thuộc tính (Attribute) trong HTML</h2>
+                </div>
+                <p class="mt-4 text-slate-600">
+                    Thuộc tính cung cấp <strong>thông tin bổ sung</strong> về các phần tử HTML. Chúng luôn được chỉ định
+                    trong <strong>thẻ mở</strong> và thường đi theo cặp <strong>tên="giá trị"</strong>.
+                </p>
+
+                <h3 class="text-xl font-semibold mt-6 mb-3 text-slate-800">Cấu trúc của một thuộc tính</h3>
+                <p class="text-slate-600">
+                    Một thuộc tính bao gồm hai phần:
+                <ul class="list-disc list-inside mt-2 space-y-1 text-slate-600">
+                    <li><strong>Tên thuộc tính (Attribute name):</strong> Xác định loại thông tin bạn muốn cung cấp (ví
+                        dụ: <code class="inline-code">href</code>, <code class="inline-code">src</code>, <code
+                            class="inline-code">title</code>).</li>
+                    <li><strong>Giá trị thuộc tính (Attribute value):</strong> Cung cấp thông tin cụ thể cho thuộc tính
+                        đó (ví dụ: "https://google.com"). Giá trị này phải được đặt trong dấu ngoặc kép.</li>
+                </ul>
+                </p>
+
+                <h3 class="text-xl font-semibold mt-6 mb-3 text-slate-800">Ví dụ Code</h3>
+                <pre><code class="language-html"><span class="comment">&lt;!-- Thẻ &lt;a&gt; với thuộc tính 'href' để tạo liên kết --&gt;</span>
+<span class="punc">&lt;</span><span class="tag">a</span> <span class="attr">href</span><span class="punc">=</span><span class="val">"https://www.google.com"</span><span class="punc">&gt;</span>Đi đến Google<span class="punc">&lt;/</span><span class="tag">a</span><span class="punc">&gt;</span>
+
+<span class="comment">&lt;!-- Thẻ &lt;img&gt; với thuộc tính 'src' để chỉ định nguồn ảnh --&gt;</span>
+<span class="comment">&lt;!-- và 'alt' để cung cấp văn bản thay thế --&gt;</span>
+<span class="punc">&lt;</span><span class="tag">img</span> <span class="attr">src</span><span class="punc">=</span><span class="val">"https://placehold.co/100"</span> <span class="attr">alt</span><span class="punc">=</span><span class="val">"Ảnh vuông 100x100"</span><span class="punc">&gt;</span>
+
+<span class="comment">&lt;!-- Thẻ &lt;p&gt; với thuộc tính 'title' để hiển thị chú thích --&gt;</span>
+<span class="punc">&lt;</span><span class="tag">p</span> <span class="attr">title</span><span class="punc">=</span><span class="val">"Đây là một chú thích!"</span><span class="punc">&gt;</span>Di chuột qua tôi để xem.<span class="punc">&lt;/</span><span class="tag">p</span><span class="punc">&gt;</span>
+</code></pre>
+
+                <h3 class="text-xl font-semibold mt-6 mb-3 text-slate-800">Kết quả</h3>
+                <div class="result-box space-y-4">
+                    <p class="text-sm text-slate-600">Đây là cách các thuộc tính hoạt động trên các phần tử khác nhau:
+                    </p>
+                    <div>
+                        <a href="https://www.google.com" target="_blank" class="text-blue-600 hover:underline">Đi đến
+                            Google</a> (Thuộc tính <code class="inline-code">href</code> làm cho văn bản này có thể nhấp
+                        được).
+                    </div>
+                    <div>
+                        <img src="https://placehold.co/100" alt="Ảnh vuông 100x100" class="rounded"> (Thuộc tính <code
+                            class="inline-code">src</code> tải hình ảnh này).
+                    </div>
+                    <div>
+                        <p title="Đây là một chú thích!">Di chuột qua tôi để xem. (Thuộc tính <code
+                                class="inline-code">title</code> tạo ra một hộp thoại nhỏ khi bạn di chuột qua).</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- === PHẦN: THẺ AUDIO === -->
+            <section id="audio" class="bg-white p-6 md:p-8 rounded-xl shadow-lg ring-1 ring-slate-900/5">
+                <div class="flex items-center gap-4">
+                    <div class="bg-blue-100 text-blue-600 p-3 rounded-full">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24"
+                            stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" />
+                        </svg>
+                    </div>
+                    <h2 class="text-3xl font-bold text-slate-900">Thẻ <code>&lt;audio&gt;</code></h2>
+                </div>
+                <p class="mt-4 text-slate-600">
+                    Thẻ <code class="inline-code">&lt;audio&gt;</code> được sử dụng để nhúng nội dung âm thanh vào một
+                    trang web, chẳng hạn như nhạc hoặc các luồng âm thanh khác.
+                </p>
+
+                <h3 class="text-xl font-semibold mt-6 mb-3 text-slate-800">Các thuộc tính phổ biến</h3>
+                <div class="overflow-x-auto">
+                    <table class="min-w-full bg-white border border-slate-200 rounded-lg">
+                        <thead class="bg-slate-100">
+                            <tr>
+                                <th class="text-left py-3 px-4 font-semibold text-sm">Thuộc tính</th>
+                                <th class="text-left py-3 px-4 font-semibold text-sm">Mô tả</th>
+                            </tr>
+                        </thead>
+                        <tbody class="text-slate-700">
+                            <tr class="border-b">
+                                <td class="py-3 px-4"><code class="inline-code">src</code></td>
+                                <td class="py-3 px-4">Xác định đường dẫn đến tệp âm thanh.</td>
+                            </tr>
+                            <tr class="border-b">
+                                <td class="py-3 px-4"><code class="inline-code">controls</code></td>
+                                <td class="py-3 px-4">Hiển thị các điều khiển âm thanh tiêu chuẩn (như nút play, pause,
+                                    âm lượng).</td>
+                            </tr>
+                            <tr class="border-b">
+                                <td class="py-3 px-4"><code class="inline-code">autoplay</code></td>
+                                <td class="py-3 px-4">Tự động phát âm thanh ngay khi trang được tải. (Lưu ý: Hầu hết
+                                    trình duyệt hiện đại chặn tính năng này).</td>
+                            </tr>
+                            <tr>
+                                <td class="py-3 px-4"><code class="inline-code">loop</code></td>
+                                <td class="py-3 px-4">Tự động phát lại âm thanh từ đầu sau khi kết thúc.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h3 class="text-xl font-semibold mt-6 mb-3 text-slate-800">Ví dụ Code</h3>
+                <pre><code class="language-html"><span class="comment">&lt;!-- Trình phát âm thanh với các nút điều khiển --&gt;</span>
+<span class="punc">&lt;</span><span class="tag">audio</span> <span class="attr">controls</span> <span class="attr">src</span><span class="punc">=</span><span class="val">"path/to/your/audio.mp3"</span><span class="punc">&gt;</span>
+  Trình duyệt của bạn không hỗ trợ thẻ audio.
+<span class="punc">&lt;/</span><span class="tag">audio</span><span class="punc">&gt;</span>
+
+<span class="comment">&lt;!-- Lưu ý quan trọng: --&gt;</span>
+<span class="comment">&lt;!-- Bạn cần thay thế "path/to/your/audio.mp3" --&gt;</span>
+<span class="comment">&lt;!-- bằng đường dẫn thực tế đến tệp âm thanh của bạn. --&gt;</span>
+</code></pre>
+
+                <h3 class="text-xl font-semibold mt-6 mb-3 text-slate-800">Kết quả</h3>
+                <div class="result-box">
+                    <p class="mb-4 text-sm text-slate-600">Đây là cách thẻ audio sẽ hiển thị. Vì không có tệp âm thanh
+                        thực tế, trình phát sẽ bị vô hiệu hóa, nhưng bạn vẫn có thể thấy các nút điều khiển của nó.</p>
+                    <audio controls src="https://homyhan-music-ngaongo.vercel.app/ngao-ngo-lyric.mp3">
+                        Trình duyệt của bạn không hỗ trợ thẻ audio.
+                    </audio>
+                </div>
+            </section>
+
+            <!-- === PHẦN: THẺ VIDEO === -->
+            <section id="video" class="bg-white p-6 md:p-8 rounded-xl shadow-lg ring-1 ring-slate-900/5">
+                <div class="flex items-center gap-4">
+                    <div class="bg-purple-100 text-purple-600 p-3 rounded-full">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24"
+                            stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                        </svg>
+                    </div>
+                    <h2 class="text-3xl font-bold text-slate-900">Thẻ <code>&lt;video&gt;</code></h2>
+                </div>
+                <p class="mt-4 text-slate-600">
+                    Thẻ <code class="inline-code">&lt;video&gt;</code> cho phép bạn nhúng nội dung video vào trang web,
+                    ví dụ như một bộ phim, clip ngắn hoặc một luồng video.
+                </p>
+
+                <h3 class="text-xl font-semibold mt-6 mb-3 text-slate-800">Các thuộc tính phổ biến</h3>
+                <div class="overflow-x-auto">
+                    <table class="min-w-full bg-white border border-slate-200 rounded-lg">
+                        <thead class="bg-slate-100">
+                            <tr>
+                                <th class="text-left py-3 px-4 font-semibold text-sm">Thuộc tính</th>
+                                <th class="text-left py-3 px-4 font-semibold text-sm">Mô tả</th>
+                            </tr>
+                        </thead>
+                        <tbody class="text-slate-700">
+                            <tr class="border-b">
+                                <td class="py-3 px-4"><code class="inline-code">src</code></td>
+                                <td class="py-3 px-4">Đường dẫn đến tệp video.</td>
+                            </tr>
+                            <tr class="border-b">
+                                <td class="py-3 px-4"><code class="inline-code">controls</code></td>
+                                <td class="py-3 px-4">Hiển thị các điều khiển video (play, pause, âm lượng, toàn màn
+                                    hình).</td>
+                            </tr>
+                            <tr class="border-b">
+                                <td class="py-3 px-4"><code class="inline-code">width</code> / <code
+                                        class="inline-code">height</code></td>
+                                <td class="py-3 px-4">Thiết lập chiều rộng và chiều cao cho trình phát video.</td>
+                            </tr>
+                            <tr class="border-b">
+                                <td class="py-3 px-4"><code class="inline-code">autoplay</code></td>
+                                <td class="py-3 px-4">Tự động phát video. Thường cần đi kèm thuộc tính <code
+                                        class="inline-code">muted</code> để hoạt động trên các trình duyệt hiện đại.
+                                </td>
+                            </tr>
+                            <tr class="border-b">
+                                <td class="py-3 px-4"><code class="inline-code">loop</code></td>
+                                <td class="py-3 px-4">Tự động phát lại video sau khi kết thúc.</td>
+                            </tr>
+                            <tr>
+                                <td class="py-3 px-4"><code class="inline-code">poster</code></td>
+                                <td class="py-3 px-4">Đường dẫn đến một hình ảnh để hiển thị trước khi video bắt đầu
+                                    phát.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+
+                <h3 class="text-xl font-semibold mt-6 mb-3 text-slate-800">Ví dụ Code</h3>
+                <pre><code class="language-html"><span class="comment">&lt;!-- Trình phát video với kích thước và ảnh đại diện --&gt;</span>
+<span class="punc">&lt;</span><span class="tag">video</span> 
+    <span class="attr">width</span><span class="punc">=</span><span class="val">"100%"</span> 
+    <span class="attr">controls</span> 
+    <span class="attr">poster</span><span class="punc">=</span><span class="val">"https://placehold.co/600x400/e2e8f0/334155?text=Video+Poster"</span>
+    <span class="attr">src</span><span class="punc">=</span><span class="val">"path/to/your/video.mp4"</span>
+<span class="punc">&gt;</span>
+    Trình duyệt của bạn không hỗ trợ thẻ video.
+<span class="punc">&lt;/</span><span class="tag">video</span><span class="punc">&gt;</span>
+
+<span class="comment">&lt;!-- Lưu ý: Thay thế "path/to/your/video.mp4" bằng đường dẫn video của bạn. --&gt;</span>
+</code></pre>
+
+                <h3 class="text-xl font-semibold mt-6 mb-3 text-slate-800">Kết quả</h3>
+                <div class="result-box">
+                    <p class="mb-4 text-sm text-slate-600">Video sẽ hiển thị với ảnh poster như bên dưới. Khi người dùng
+                        nhấn play, video thực tế sẽ được tải (nếu đường dẫn hợp lệ).</p>
+                    <video width="100%" controls poster="https://placehold.co/600x400/e2e8f0/334155?text=Video+Poster"
+                        src="">
+                        Trình duyệt của bạn không hỗ trợ thẻ video.
+                    </video>
+                </div>
+            </section>
+
+            <!-- === PHẦN: THẺ IFRAME === -->
+            <section id="iframe" class="bg-white p-6 md:p-8 rounded-xl shadow-lg ring-1 ring-slate-900/5">
+                <div class="flex items-center gap-4">
+                    <div class="bg-rose-100 text-rose-600 p-3 rounded-full">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24"
+                            stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+                        </svg>
+                    </div>
+                    <h2 class="text-3xl font-bold text-slate-900">Thẻ <code>&lt;iframe&gt;</code></h2>
+                </div>
+                <p class="mt-4 text-slate-600">
+                    Thẻ <code class="inline-code">&lt;iframe&gt;</code> (Inline Frame) được dùng để nhúng một trang web
+                    khác vào bên trong trang web hiện tại. Đây là cách phổ biến để nhúng bản đồ, video từ YouTube, hoặc
+                    các nội dung từ bên thứ ba.
+                </p>
+
+                <h3 class="text-xl font-semibold mt-6 mb-3 text-slate-800">Cách lấy mã nhúng từ YouTube (Ví dụ thực tế)
+                </h3>
+                <p class="text-slate-600 mb-4">Để nhúng một video YouTube, bạn không cần phải viết thẻ iframe từ đầu.
+                    YouTube đã cung cấp sẵn công cụ để làm việc này:</p>
+                <ol class="list-decimal list-inside space-y-3 text-slate-700 bg-slate-50 p-4 rounded-lg border">
+                    <li>Mở video bạn muốn nhúng trên <strong>YouTube</strong>.</li>
+                    <li>Bên dưới video, nhấn vào nút <strong>Chia sẻ (Share)</strong>.</li>
+                    <li>Một cửa sổ sẽ hiện ra, hãy chọn tùy chọn <strong>Nhúng (Embed)</strong>.</li>
+                    <li>Bạn sẽ thấy một đoạn mã HTML bắt đầu bằng <code class="inline-code">&lt;iframe...</code>. Hãy
+                        nhấn nút <strong>Sao chép (Copy)</strong>.</li>
+                    <li>Dán đoạn mã vừa sao chép vào tệp HTML của bạn. Thế là xong!</li>
+                </ol>
+
+                <h3 class="text-xl font-semibold mt-8 mb-3 text-slate-800">Ví dụ về mã nhúng từ YouTube</h3>
+                <p class="text-slate-600 mb-2">Đoạn mã bạn sao chép từ YouTube sẽ trông giống như thế này:</p>
+                <pre><code class="language-html"><span class="punc">&lt;</span><span class="tag">iframe</span> 
+    <span class="attr">width</span><span class="punc">=</span><span class="val">"560"</span> 
+    <span class="attr">height</span><span class="punc">=</span><span class="val">"315"</span> 
+    <span class="attr">src</span><span class="punc">=</span><span class="val">"https://www.youtube.com/embed/dQw4w9WgXcQ"</span> 
+    <span class="attr">title</span><span class="punc">=</span><span class="val">"YouTube video player"</span> 
+    <span class="attr">frameborder</span><span class="punc">=</span><span class="val">"0"</span> 
+    <span class="attr">allow</span><span class="punc">=</span><span class="val">"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"</span> 
+    <span class="attr">allowfullscreen</span><span class="punc">&gt;</span>
+<span class="punc">&lt;/</span><span class="tag">iframe</span><span class="punc">&gt;</span>
+</code></pre>
+
+                <h3 class="text-xl font-semibold mt-6 mb-3 text-slate-800">Kết quả</h3>
+                <div class="result-box">
+                    <p class="mb-4 text-sm text-slate-600">Đây là một video YouTube được nhúng trực tiếp vào trang web
+                        sau khi bạn dán mã vào.</p>
+                    <div class="aspect-w-16 aspect-h-9">
+                        <!-- <iframe class="w-full h-full rounded-lg" src="https://www.youtube.com/embed/dQw4w9WgXcQ"
+                            title="YouTube video player" frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen></iframe> -->
+
+                        <iframe class="w-full h-full rounded-lg"
+                            src="https://www.youtube.com/embed/SQ93oOmVxHs?si=dYCOeNcSqDB9sjxb"
+                            title="YouTube video player" frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    </div>
+                </div>
+            </section>
+
+
+            <!-- === PHẦN: FORM === -->
+            <section id="form" class="bg-white p-6 md:p-8 rounded-xl shadow-lg ring-1 ring-slate-900/5">
+                <div class="flex items-center gap-4">
+                    <div class="bg-amber-100 text-amber-600 p-3 rounded-full">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24"
+                            stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                        </svg>
+                    </div>
+                    <h2 class="text-3xl font-bold text-slate-900">Thẻ <code>&lt;form&gt;</code> và các phần tử nhập liệu
+                    </h2>
+                </div>
+
+                <p class="mt-4 text-slate-600">
+                    Thẻ <code class="inline-code">&lt;form&gt;</code> được sử dụng để tạo biểu mẫu (form) cho phép người
+                    dùng nhập dữ liệu.
+                    Bên trong form có thể chứa các thẻ như <code class="inline-code">&lt;label&gt;</code>, <code
+                        class="inline-code">&lt;input&gt;</code>,
+                    <code class="inline-code">&lt;textarea&gt;</code>, <code class="inline-code">&lt;button&gt;</code>,
+                    <code class="inline-code">&lt;select&gt;</code>, v.v.
+                </p>
+
+                <h3 class="text-xl font-semibold mt-6 mb-3 text-slate-800">Ví dụ Code</h3>
+                <pre><code class="language-html"><span class="punc">&lt;</span><span class="tag">form</span> <span class="attr">action</span><span class="punc">=</span><span class="val">"#"</span> <span class="attr">method</span><span class="punc">=</span><span class="val">"post"</span><span class="punc">&gt;</span>
+  <span class="punc">&lt;</span><span class="tag">label</span> <span class="attr">for</span><span class="punc">=</span><span class="val">"username"</span><span class="punc">&gt;</span>Tên đăng nhập:<span class="punc">&lt;/</span><span class="tag">label</span><span class="punc">&gt;</span>
+  <span class="punc">&lt;</span><span class="tag">input</span> <span class="attr">type</span><span class="punc">=</span><span class="val">"text"</span> <span class="attr">id</span><span class="punc">=</span><span class="val">"username"</span> <span class="attr">name</span><span class="punc">=</span><span class="val">"username"</span><span class="punc">&gt;</span><br><br>
+
+  <span class="punc">&lt;</span><span class="tag">label</span> <span class="attr">for</span><span class="punc">=</span><span class="val">"age"</span><span class="punc">&gt;</span>Tuổi:<span class="punc">&lt;/</span><span class="tag">label</span><span class="punc">&gt;</span>
+  <span class="punc">&lt;</span><span class="tag">input</span> <span class="attr">type</span><span class="punc">=</span><span class="val">"number"</span> <span class="attr">id</span><span class="punc">=</span><span class="val">"age"</span> <span class="attr">name</span><span class="punc">=</span><span class="val">"age"</span><span class="punc">&gt;</span><br><br>
+
+  <span class="punc">&lt;</span><span class="tag">label</span> <span class="attr">for</span><span class="punc">=</span><span class="val">"password"</span><span class="punc">&gt;</span>Mật khẩu:<span class="punc">&lt;/</span><span class="tag">label</span><span class="punc">&gt;</span>
+  <span class="punc">&lt;</span><span class="tag">input</span> <span class="attr">type</span><span class="punc">=</span><span class="val">"password"</span> <span class="attr">id</span><span class="punc">=</span><span class="val">"password"</span><span class="attr"> name</span><span class="punc">=</span><span class="val">"password"</span><span class="punc">&gt;</span><br><br>
+
+  <span class="punc">&lt;</span><span class="tag">label</span> <span class="attr">for</span><span class="punc">=</span><span class="val">"date"</span><span class="punc">&gt;</span>Ngày sinh:<span class="punc">&lt;/</span><span class="tag">label</span><span class="punc">&gt;</span>
+  <span class="punc">&lt;</span><span class="tag">input</span> <span class="attr">type</span><span class="punc">=</span><span class="val">"date"</span> <span class="attr">id</span><span class="punc">=</span><span class="val">"date"</span> <span class="attr">name</span><span class="punc">=</span><span class="val">"date"</span><span class="punc">&gt;</span><br><br>
+
+  <span class="punc">&lt;</span><span class="tag">label</span> <span class="attr">for</span><span class="punc">=</span><span class="val">"time"</span><span class="punc">&gt;</span>Giờ hẹn:<span class="punc">&lt;/</span><span class="tag">label</span><span class="punc">&gt;</span>
+  <span class="punc">&lt;</span><span class="tag">input</span> <span class="attr">type</span><span class="punc">=</span><span class="val">"time"</span> <span class="attr">id</span><span class="punc">=</span><span class="val">"time"</span> <span class="attr">name</span><span class="punc">=</span><span class="val">"time"</span><span class="punc">&gt;</span><br><br>
+
+  <span class="punc">&lt;</span><span class="tag">label</span><span class="punc">&gt;</span>Giới tính:<span class="punc">&lt;/</span><span class="tag">label</span><span class="punc">&gt;</span>
+  <span class="punc">&lt;</span><span class="tag">input</span> <span class="attr">type</span><span class="punc">=</span><span class="val">"radio"</span> <span class="attr">name</span><span class="punc">=</span><span class="val">"gender"</span> <span class="attr">value</span><span class="punc">=</span><span class="val">"male"</span><span class="punc">&gt;</span> Nam
+  <span class="punc">&lt;</span><span class="tag">input</span> <span class="attr">type</span><span class="punc">=</span><span class="val">"radio"</span> <span class="attr">name</span><span class="punc">=</span><span class="val">"gender"</span> <span class="attr">value</span><span class="punc">=</span><span class="val">"female"</span><span class="punc">&gt;</span> Nữ<br><br>
+
+  <span class="punc">&lt;</span><span class="tag">label</span><span class="punc">&gt;</span>Sở thích:<span class="punc">&lt;/</span><span class="tag">label</span><span class="punc">&gt;</span><br>
+  <span class="punc">&lt;</span><span class="tag">input</span> <span class="attr">type</span><span class="punc">=</span><span class="val">"checkbox"</span> <span class="attr">name</span><span class="punc">=</span><span class="val">"hobby"</span> <span class="attr">value</span><span class="punc">=</span><span class="val">"reading"</span><span class="punc">&gt;</span> Đọc sách
+  <span class="punc">&lt;</span><span class="tag">input</span> <span class="attr">type</span><span class="punc">=</span><span class="val">"checkbox"</span> <span class="attr">name</span><span class="punc">=</span><span class="val">"hobby"</span> <span class="attr">value</span><span class="punc">=</span><span class="val">"traveling"</span><span class="punc">&gt;</span> Du lịch<br><br>
+
+  <span class="punc">&lt;</span><span class="tag">label</span> <span class="attr">for</span><span class="punc">=</span><span class="val">"message"</span><span class="punc">&gt;</span>Tin nhắn:<span class="punc">&lt;/</span><span class="tag">label</span><span class="punc">&gt;</span><br>
+  <span class="punc">&lt;</span><span class="tag">textarea</span> <span class="attr">id</span><span class="punc">=</span><span class="val">"message"</span> <span class="attr">rows</span><span class="punc">=</span><span class="val">"4"</span> <span class="attr">cols</span><span class="punc">=</span><span class="val">"50"</span><span class="punc">&gt;&lt;/</span><span class="tag">textarea</span><span class="punc">&gt;</span><br><br>
+
+  <span class="punc">&lt;</span><span class="tag">label</span> <span class="attr">for</span><span class="punc">=</span><span class="val">"city"</span><span class="punc">&gt;</span>Thành phố:<span class="punc">&lt;/</span><span class="tag">label</span><span class="punc">&gt;</span>
+  <span class="punc">&lt;</span><span class="tag">select</span> <span class="attr">id</span><span class="punc">=</span><span class="val">"city"</span> <span class="attr">name</span><span class="punc">=</span><span class="val">"city"</span><span class="punc">&gt;</span>
+    <span class="punc">&lt;</span><span class="tag">option</span> <span class="attr">value</span><span class="punc">=</span><span class="val">"hanoi"</span><span class="punc">&gt;</span>Hà Nội<span class="punc">&lt;/</span><span class="tag">option</span><span class="punc">&gt;</span>
+    <span class="punc">&lt;</span><span class="tag">option</span> <span class="attr">value</span><span class="punc">=</span><span class="val">"hcm"</span><span class="punc">&gt;</span>TP. Hồ Chí Minh<span class="punc">&lt;/</span><span class="tag">option</span><span class="punc">&gt;</span>
+  <span class="punc">&lt;/</span><span class="tag">select</span><span class="punc">&gt;</span><br><br>
+
+  <span class="punc">&lt;</span><span class="tag">button</span> <span class="attr">type</span><span class="punc">=</span><span class="val">"submit"</span><span class="punc">&gt;</span>Gửi<span class="punc">&lt;/</span><span class="tag">button</span><span class="punc">&gt;</span>
+<span class="punc">&lt;/</span><span class="tag">form</span><span class="punc">&gt;</span>
+</code></pre>
+
+                <h3 class="text-xl font-semibold mt-6 mb-3 text-slate-800">Kết quả</h3>
+                <div class="result-box">
+                    <form action="#" method="post" class="space-y-3">
+                        <label for="username">Tên đăng nhập:</label>
+                        <input type="text" id="username" name="username" class="border p-2 rounded w-full">
+
+                        <label for="age">Tuổi:</label>
+                        <input type="number" id="age" name="age" class="border p-2 rounded w-full">
+
+                        <label for="password">Mật khẩu:</label>
+                        <input type="password" id="password" name="password" class="border p-2 rounded w-full">
+
+                        <label for="date">Ngày sinh:</label>
+                        <input type="date" id="date" name="date" class="border p-2 rounded w-full">
+
+                        <label for="time">Giờ hẹn:</label>
+                        <input type="time" id="time" name="time" class="border p-2 rounded w-full">
+
+                        <label>Giới tính:</label><br>
+                        <input type="radio" name="gender" value="male"> Nam
+                        <input type="radio" name="gender" value="female"> Nữ
+                        <br>
+                        <label>Sở thích:</label><br>
+                        <input type="checkbox" name="hobby" value="reading"> Đọc sách
+                        <input type="checkbox" name="hobby" value="traveling"> Du lịch
+
+                        <label for="message">Tin nhắn:</label>
+                        <textarea id="message" rows="4" class="border p-2 rounded w-full"></textarea>
+
+                        <label for="city">Thành phố:</label>
+                        <select id="city" name="city" class="border p-2 rounded w-full">
+                            <option value="hanoi">Hà Nội</option>
+                            <option value="hcm">TP. Hồ Chí Minh</option>
+                        </select>
+
+                        <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded">Gửi</button>
+                    </form>
+                </div>
+            </section>
+
+
+        </main>
+
+        <!-- Chân trang -->
+        <footer class="text-center mt-16 py-4 text-slate-500 text-sm">
+            <p>Design by My Han Ho</p>
+        </footer>
+
+    </div>
+</body>
+
+</html>
