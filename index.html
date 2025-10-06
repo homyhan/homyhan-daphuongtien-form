@@ -478,6 +478,61 @@
                 </div>
             </section>
 
+            <!-- === PHẦN: ĐƯỜNG DẪN TƯƠNG ĐỐI VÀ TUYỆT ĐỐI === -->
+<section id="path" class="bg-white p-6 md:p-8 rounded-xl shadow-lg ring-1 ring-slate-900/5 mt-8">
+  <div class="flex items-center gap-4">
+    <div class="bg-green-100 text-green-600 p-3 rounded-full">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4" />
+      </svg>
+    </div>
+    <h2 class="text-3xl font-bold text-slate-900">Đường dẫn trong HTML</h2>
+  </div>
+
+  <p class="mt-4 text-slate-600">
+    Trong HTML, khi chèn hình ảnh, liên kết, hoặc tệp đa phương tiện, ta cần chỉ định vị trí tệp bằng <code class="inline-code">đường dẫn (path)</code>.  
+    Có hai loại đường dẫn chính: <b>đường dẫn tương đối</b> và <b>đường dẫn tuyệt đối</b>.
+  </p>
+
+  <h3 class="text-xl font-semibold mt-6 mb-2 text-slate-800">1️⃣ Đường dẫn tuyệt đối (Absolute Path)</h3>
+  <p class="text-slate-600">
+    Là đường dẫn đầy đủ, bao gồm giao thức (http/https), tên miền và vị trí tệp.  
+    Dùng khi liên kết đến tài nguyên bên ngoài website.
+  </p>
+
+  <pre><code class="language-html"><span class="punc">&lt;</span><span class="tag">img</span> <span class="attr">src</span><span class="punc">=</span><span class="val">"https://www.w3schools.com/images/w3schools_green.jpg"</span> <span class="attr">alt</span><span class="punc">=</span><span class="val">"Logo W3Schools"</span> <span class="punc">/&gt;</span></code></pre>
+
+  <h3 class="text-xl font-semibold mt-6 mb-2 text-slate-800">2️⃣ Đường dẫn tương đối (Relative Path)</h3>
+  <p class="text-slate-600">
+    Là đường dẫn đến tệp trong cùng thư mục hoặc thư mục con của dự án.  
+    Dùng khi các tệp nằm trong cấu trúc thư mục của trang web.
+  </p>
+
+  <ul class="list-disc ml-6 mt-3 text-slate-600">
+    <li><code>./</code> – thư mục hiện tại</li>
+    <li><code>../</code> – thư mục cha (ra ngoài 1 cấp)</li>
+  </ul>
+
+  <pre><code class="language-html"><span class="comment">&lt;!-- Tệp ảnh nằm cùng thư mục --&gt;</span>
+<span class="punc">&lt;</span><span class="tag">img</span> <span class="attr">src</span><span class="punc">=</span><span class="val">"./logo.png"</span> <span class="attr">alt</span><span class="punc">=</span><span class="val">"Logo trang web"</span> <span class="punc">/&gt;</span>
+
+<span class="comment">&lt;!-- Tệp ảnh nằm trong thư mục con 'images' --&gt;</span>
+<span class="punc">&lt;</span><span class="tag">img</span> <span class="attr">src</span><span class="punc">=</span><span class="val">"./images/banner.jpg"</span> <span class="attr">alt</span><span class="punc">=</span><span class="val">"Ảnh banner"</span> <span class="punc">/&gt;</span>
+
+<span class="comment">&lt;!-- Tệp ảnh nằm ở thư mục cha --&gt;</span>
+<span class="punc">&lt;</span><span class="tag">img</span> <span class="attr">src</span><span class="punc">=</span><span class="val">"../logo.png"</span> <span class="attr">alt</span><span class="punc">=</span><span class="val">"Logo từ thư mục cha"</span> <span class="punc">/&gt;</span>
+</code></pre>
+
+  <h3 class="text-xl font-semibold mt-6 mb-3 text-slate-800">Kết quả minh họa</h3>
+  <div class="result-box space-y-3">
+    <p>Ví dụ về đường dẫn tuyệt đối:</p>
+    <img src="https://www.w3schools.com/images/w3schools_green.jpg" alt="Logo W3Schools" width="150">
+
+    <p>Ví dụ về đường dẫn tương đối:</p>
+    <img src="./images/banner.jpg" alt="Ảnh banner" width="150" onerror="this.alt='(Không tìm thấy ảnh minh họa)'">
+  </div>
+</section>
+
 
         </main>
 
@@ -491,3 +546,4 @@
 
 
 </html>
+
