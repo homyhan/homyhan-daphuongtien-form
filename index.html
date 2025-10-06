@@ -11,6 +11,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" 
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         /* CSS tùy chỉnh */
         body {
@@ -533,6 +535,68 @@
   </div>
 </section>
 
+            <!-- === PHẦN: FONT AWESOME === -->
+<section id="fontawesome" class="bg-white p-6 md:p-8 rounded-xl shadow-lg ring-1 ring-slate-900/5 mt-8">
+  <div class="flex items-center gap-4">
+    <div class="bg-purple-100 text-purple-600 p-3 rounded-full">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M13.828 14.828a4 4 0 01-5.656 0M9 10a4 4 0 018 0v.01M21 12.01a9 9 0 11-18 0 9 9 0 0118 0z" />
+      </svg>
+    </div>
+    <h2 class="text-3xl font-bold text-slate-900">Sử dụng Font Awesome trong HTML</h2>
+  </div>
+
+  <p class="mt-4 text-slate-600">
+    <b>Font Awesome</b> là thư viện biểu tượng (icon) phổ biến, giúp thêm hình ảnh minh họa sinh động vào trang web mà không cần tải ảnh.  
+    Biểu tượng được hiển thị bằng thẻ <code class="inline-code">&lt;i&gt;</code> hoặc <code class="inline-code">&lt;span&gt;</code> có gắn lớp (class) tương ứng.
+  </p>
+
+  <h3 class="text-xl font-semibold mt-6 mb-2 text-slate-800">1️⃣ Thêm Font Awesome vào trang HTML</h3>
+  <p class="text-slate-600">
+    Dán dòng sau vào bên trong phần <code class="inline-code">&lt;head&gt;</code> của trang HTML để tải thư viện từ CDN:
+  </p>
+
+  <pre><code class="language-html"><span class="punc">&lt;</span><span class="tag">head</span><span class="punc">&gt;</span>
+  <span class="punc">&lt;</span><span class="tag">link</span> <span class="attr">rel</span><span class="punc">=</span><span class="val">"stylesheet"</span> 
+        <span class="attr">href</span><span class="punc">=</span><span class="val">"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"</span><span class="punc">&gt;</span>
+<span class="punc">&lt;/</span><span class="tag">head</span><span class="punc">&gt;</span>
+</code></pre>
+
+  <h3 class="text-xl font-semibold mt-6 mb-2 text-slate-800">2️⃣ Sử dụng biểu tượng (icon)</h3>
+  <p class="text-slate-600">
+    Mỗi biểu tượng có một tên lớp (class name).  
+    Dạng chung: <code class="inline-code">&lt;i class="fa-solid fa-iconname"&gt;&lt;/i&gt;</code>
+  </p>
+
+  <pre><code class="language-html"><span class="comment">&lt;!-- Biểu tượng trái tim --&gt;</span>
+<span class="punc">&lt;</span><span class="tag">i</span> <span class="attr">class</span><span class="punc">=</span><span class="val">"fa-solid fa-heart"</span><span class="punc">&gt;&lt;/</span><span class="tag">i</span><span class="punc">&gt;</span>
+
+<span class="comment">&lt;!-- Biểu tượng ngôi sao --&gt;</span>
+<span class="punc">&lt;</span><span class="tag">i</span> <span class="attr">class</span><span class="punc">=</span><span class="val">"fa-solid fa-star"</span><span class="punc">&gt;&lt;/</span><span class="tag">i</span><span class="punc">&gt;</span>
+
+<span class="comment">&lt;!-- Biểu tượng mạng xã hội --&gt;</span>
+<span class="punc">&lt;</span><span class="tag">i</span> <span class="attr">class</span><span class="punc">=</span><span class="val">"fa-brands fa-facebook"</span><span class="punc">&gt;&lt;/</span><span class="tag">i</span><span class="punc">&gt;</span>
+</code></pre>
+
+  <h3 class="text-xl font-semibold mt-6 mb-3 text-slate-800">3️⃣ Kết quả minh họa</h3>
+  <div class="result-box flex flex-wrap gap-4 text-3xl text-purple-600">
+    <i class="fa-solid fa-heart"></i>
+    <i class="fa-solid fa-star"></i>
+    <i class="fa-solid fa-bell"></i>
+    <i class="fa-brands fa-facebook text-blue-600"></i>
+    <i class="fa-brands fa-instagram text-pink-500"></i>
+    <i class="fa-brands fa-github text-gray-800"></i>
+  </div>
+
+  <h3 class="text-xl font-semibold mt-6 mb-2 text-slate-800">4️⃣ Một số nhóm biểu tượng phổ biến</h3>
+  <ul class="list-disc ml-6 mt-3 text-slate-600">
+    <li><code>fa-solid</code> – Biểu tượng dạng đặc (solid icons)</li>
+    <li><code>fa-regular</code> – Biểu tượng nét mảnh (regular icons)</li>
+    <li><code>fa-brands</code> – Logo thương hiệu (Facebook, Instagram,...)</li>
+  </ul>
+</section>
+
+
 
         </main>
 
@@ -546,4 +610,5 @@
 
 
 </html>
+
 
